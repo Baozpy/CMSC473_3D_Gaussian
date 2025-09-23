@@ -1,1 +1,1 @@
-# CMSC473-3D_-Gaussian
+# CMSC473_3D_Gaussian
