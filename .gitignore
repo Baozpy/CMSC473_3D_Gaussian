@@ -1,127 +1,131 @@
-.clangd
-compile_commands.json
+*
+!/gsplat/
+!/pipeline/
 
-# Visual Studio Code configs.
-.vscode/
+# .clangd
+# compile_commands.json
 
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
+# # Visual Studio Code configs.
+# .vscode/
 
-# C extensions
-*.so
+# # Byte-compiled / optimized / DLL files
+# __pycache__/
+# *.py[cod]
+# *$py.class
 
-# Distribution / packaging
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-# lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
+# # C extensions
+# *.so
 
-# PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
+# # Distribution / packaging
+# .Python
+# build/
+# develop-eggs/
+# dist/
+# downloads/
+# eggs/
+# .eggs/
+# # lib/
+# lib64/
+# parts/
+# sdist/
+# var/
+# wheels/
+# *.egg-info/
+# .installed.cfg
+# *.egg
+# MANIFEST
 
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
+# # PyInstaller
+# #  Usually these files are written by a python script from a template
+# #  before PyInstaller builds the exe, so as to inject date/other infos into it.
+# *.manifest
+# *.spec
 
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-.hypothesis/
-.pytest_cache/
+# # Installer logs
+# pip-log.txt
+# pip-delete-this-directory.txt
 
-# Translations
-*.mo
-*.pot
+# # Unit test / coverage reports
+# htmlcov/
+# .tox/
+# .coverage
+# .coverage.*
+# .cache
+# nosetests.xml
+# coverage.xml
+# *.cover
+# .hypothesis/
+# .pytest_cache/
 
-# Django stuff:
-*.log
-local_settings.py
-db.sqlite3
+# # Translations
+# *.mo
+# *.pot
 
-# Flask stuff:
-instance/
-.webassets-cache
+# # Django stuff:
+# *.log
+# local_settings.py
+# db.sqlite3
 
-# Scrapy stuff:
-.scrapy
+# # Flask stuff:
+# instance/
+# .webassets-cache
 
-# Sphinx documentation
-docs/_build/
+# # Scrapy stuff:
+# .scrapy
 
-# PyBuilder
-target/
+# # Sphinx documentation
+# docs/_build/
 
-# Jupyter Notebook
-.ipynb_checkpoints
+# # PyBuilder
+# target/
 
-# pyenv
-.python-version
+# # Jupyter Notebook
+# .ipynb_checkpoints
 
-# celery beat schedule file
-celerybeat-schedule
+# # pyenv
+# .python-version
 
-# SageMath parsed files
-*.sage.py
+# # celery beat schedule file
+# celerybeat-schedule
 
-# Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
+# # SageMath parsed files
+# *.sage.py
 
-# Spyder project settings
-.spyderproject
-.spyproject
+# # Environments
+# .env
+# .venv
+# env/
+# venv/
+# ENV/
+# env.bak/
+# venv.bak/
 
-# Rope project settings
-.ropeproject
+# # Spyder project settings
+# .spyderproject
+# .spyproject
 
-# mkdocs documentation
-/site
+# # Rope project settings
+# .ropeproject
 
-# mypy
-.mypy_cache/
+# # mkdocs documentation
+# /site
 
-.DS_Store
+# # mypy
+# .mypy_cache/
 
-# Direnv config.
-.envrc
+# .DS_Store
 
-# line_profiler
-*.lprof
+# # Direnv config.
+# .envrc
 
-*build
-compile_commands.json
-*.dump
+# # line_profiler
+# *.lprof
 
-data
-results
+# *build
+# compile_commands.json
+# *.dump
 
-!examples/benchmarks/compression/results/
+# data
+# results
+
+# !examples/benchmarks/compression/results/
