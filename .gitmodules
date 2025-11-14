@@ -1,6 +1,0 @@
-[submodule "gsplat/cuda/csrc/third_party/glm"]
-	path = gsplat/cuda/csrc/third_party/glm
-	url = https://github.com/g-truc/glm.git
-[submodule "comfyui"]
-	path = comfyui
-	url = https://github.com/city96/ComfyUI-GGUF
