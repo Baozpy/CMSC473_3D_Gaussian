@@ -7,6 +7,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Union
 
+import random
 import imageio
 import numpy as np
 import torch
@@ -76,9 +77,10 @@ class Config:
     # A global factor to scale the number of training steps
     steps_scaler: float = 1.0
 
-    # Number of training steps
+    # Number of training steps; max 30_000
     max_steps: int = 30_000
     # Steps to evaluate the model
+    # 7_000, 30_000 default
     eval_steps: List[int] = field(default_factory=lambda: [7_000, 30_000])
     # Steps to save the model
     save_steps: List[int] = field(default_factory=lambda: [7_000, 30_000])
@@ -1009,8 +1011,10 @@ class Runner:
             )  # [N, 3, 4]
         elif cfg.render_traj_path == "ellipse":
             height = camtoworlds_all[:, 2, 3].mean()
+            height_var = random.random()*2
+            var = random.random()
             camtoworlds_all = generate_ellipse_path_z(
-                camtoworlds_all, height=height, variation = 1
+                camtoworlds_all, height=height*height_var, variation = var
             )  # [N, 3, 4]
         elif cfg.render_traj_path == "spiral":
             camtoworlds_all = generate_spiral_path(
