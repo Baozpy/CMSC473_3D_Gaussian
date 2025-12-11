@@ -3,6 +3,7 @@ from google.genai import types
 from PIL import Image
 import os
 
+
 client = genai.Client(api_key="")
 
 os.makedirs('results_nano_banana/cleaned_frames_nbpro', exist_ok=True)
