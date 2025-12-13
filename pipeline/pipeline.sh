@@ -34,7 +34,9 @@ do
         --results_dir results_nano_banana/cleaned_frames_nbpro
 
     # resize and add frames to original batch of input images
-    python resize_images.py
+    python resize_images.py \
+        --reference_dir input/images \
+        --target_dir results_nano_banana/cleaned_frames_nbpro
 
     if [ "$i" -ne "$MAX_ITERATIONS" ]; then
         # remove sparse folder
