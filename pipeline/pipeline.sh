@@ -1,6 +1,7 @@
 # before running bash script make sure your input images are in the input/images folder
 
 MAX_ITERATIONS=3
+API_KEY=    # place your api key here
 
 # resize input images to have a height of 1248
 python resize_input.py
@@ -27,7 +28,10 @@ do
     ffmpeg -i results_nano_banana/videos/traj_29999.mp4 -r 5 results_nano_banana/frames/frame%d.png
 
     # api call to nano banana to clean up frames
-    python api_call.py
+    python api_call.py \
+        --key $API_KEY \
+        --input_dir results_nano_banana/frames \
+        --results_dir results_nano_banana/cleaned_frames_nbpro
 
     # resize and add frames to original batch of input images
     python resize_images.py
