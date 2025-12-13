@@ -43,19 +43,19 @@ Most 3DGS rendered frames for a model trained on just 25% of the original bicycl
 <div style="display: flex; justify-content: space-around; width: 100%;">
   <div style="flex: 1; padding: 5px;">
     <p><strong>3DGS Rendered Frame 16</strong></p>
-    <img src="pipeline/results_nano_banana_bikesparse48/cleaned_frames_nbpro/frame16/frame16.png" style="width: 100%; height: auto;"/>
+    <img src="pipeline/results_nano_banana_bikesparse48/cleaned_frames_nbpro/frame16/frame16.png" style="width: 25%; height: auto;"/>
   </div>
   <div style="flex: 1; padding: 5px;">
     <p><strong>Downsampled</strong></p>
-    <img src="pipeline/results_nano_banana_bikesparse48/cleaned_frames_nbpro/frame16/frame16_low_res.png" style="width: 100%; height: auto;"/>
+    <img src="pipeline/results_nano_banana_bikesparse48/cleaned_frames_nbpro/frame16/frame16_low_res.png" style="width: 25%; height: auto;"/>
   </div>
   <div style="flex: 1; padding: 5px;">
     <p><strong>Colored Depth Map</strong></p>
-    <img src="pipeline/results_nano_banana_bikesparse48/cleaned_frames_nbpro/frame16/frame16_depth_map.png" style="width: 100%; height: auto;"/>
+    <img src="pipeline/results_nano_banana_bikesparse48/cleaned_frames_nbpro/frame16/frame16_depth_map.png" style="width: 25%; height: auto;"/>
   </div>
   <div style="flex: 1; padding: 5px;">
     <p><strong>Cleaned Frame 16</strong></p>
-    <img src="pipeline/results_nano_banana_bikesparse48/cleaned_frames_nbpro/frame16/frame16_cleaned.png" style="width: 100%; height: auto;"/>
+    <img src="pipeline/results_nano_banana_bikesparse48/cleaned_frames_nbpro/frame16/frame16_cleaned.png" style="width: 25%; height: auto;"/>
   </div>
 </div>
 <br>
@@ -63,19 +63,19 @@ However some reconstructed frames had clear hallucinations, usually in the backg
 <div style="display: flex; justify-content: space-around; width: 100%;">
   <div style="flex: 1; padding: 5px;">
     <p><strong>3DGS Rendered Frame 4</strong></p>
-    <img src="pipeline/results_nano_banana_bikesparse48/cleaned_frames_nbpro/frame4/frame4.png" style="width: 100%; height: auto;"/>
+    <img src="pipeline/results_nano_banana_bikesparse48/cleaned_frames_nbpro/frame4/frame4.png" style="width: 25%; height: auto;"/>
   </div>
   <div style="flex: 1; padding: 5px;">
     <p><strong>Downsampled</strong></p>
-    <img src="pipeline/results_nano_banana_bikesparse48/cleaned_frames_nbpro/frame4/frame4_low_res.png" style="width: 100%; height: auto;"/>
+    <img src="pipeline/results_nano_banana_bikesparse48/cleaned_frames_nbpro/frame4/frame4_low_res.png" style="width: 25%; height: auto;"/>
   </div>
   <div style="flex: 1; padding: 5px;">
     <p><strong>Colored Depth Map</strong></p>
-    <img src="pipeline/results_nano_banana_bikesparse48/cleaned_frames_nbpro/frame4/frame4_depth_map.png" style="width: 100%; height: auto;"/>
+    <img src="pipeline/results_nano_banana_bikesparse48/cleaned_frames_nbpro/frame4/frame4_depth_map.png" style="width: 25%; height: auto;"/>
   </div>
   <div style="flex: 1; padding: 5px;">
     <p><strong>Cleaned Frame 4</strong></p>
-    <img src="pipeline/results_nano_banana_bikesparse48/cleaned_frames_nbpro/frame4/frame4_cleaned.png" style="width: 100%; height: auto;"/>
+    <img src="pipeline/results_nano_banana_bikesparse48/cleaned_frames_nbpro/frame4/frame4_cleaned.png" style="width: 25%; height: auto;"/>
   </div>
 </div>
 
@@ -84,19 +84,19 @@ Nano Banana Pro performed significantly worse on just 15% of the original bicycl
 <div style="display: flex; justify-content: space-around; width: 100%;">
   <div style="flex: 1; padding: 5px;">
     <p><strong>3DGS Rendered Frame 14</strong></p>
-    <img src="pipeline/results_nano_banana_bikesparse29/cleaned_frames_nbpro/frame14/frame14.png" style="width: 100%; height: auto;"/>
+    <img src="pipeline/results_nano_banana_bikesparse29/cleaned_frames_nbpro/frame14/frame14.png" style="width: 25%; height: auto;"/>
   </div>
   <div style="flex: 1; padding: 5px;">
     <p><strong>Downsampled</strong></p>
-    <img src="pipeline/results_nano_banana_bikesparse29/cleaned_frames_nbpro/frame14/frame14_low_res.png" style="width: 100%; height: auto;"/>
+    <img src="pipeline/results_nano_banana_bikesparse29/cleaned_frames_nbpro/frame14/frame14_low_res.png" style="width: 25%; height: auto;"/>
   </div>
   <div style="flex: 1; padding: 5px;">
     <p><strong>Colored Depth Map</strong></p>
-    <img src="pipeline/results_nano_banana_bikesparse29/cleaned_frames_nbpro/frame14/frame14_depth_map.png" style="width: 100%; height: auto;"/>
+    <img src="pipeline/results_nano_banana_bikesparse29/cleaned_frames_nbpro/frame14/frame14_depth_map.png" style="width: 25%; height: auto;"/>
   </div>
   <div style="flex: 1; padding: 5px;">
     <p><strong>Cleaned Frame 14</strong></p>
-    <img src="pipeline/results_nano_banana_bikesparse29/cleaned_frames_nbpro/frame14/frame14_cleaned.png" style="width: 100%; height: auto;"/>
+    <img src="pipeline/results_nano_banana_bikesparse29/cleaned_frames_nbpro/frame14/frame14_cleaned.png" style="width: 25%; height: auto;"/>
   </div>
 </div>
 
