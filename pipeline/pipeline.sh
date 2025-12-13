@@ -4,7 +4,8 @@ MAX_ITERATIONS=3
 API_KEY=    # place your api key here
 
 # resize input images to have a height of 1248
-python resize_input.py
+python resize_input.py \
+    --input_dir input/images
 
 for i in $(seq 1 $MAX_ITERATIONS);
 do
