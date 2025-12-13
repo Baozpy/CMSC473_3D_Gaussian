@@ -86,3 +86,9 @@ This approach performed worse on all benchmarks when compared to just using 3DGS
     ```
     bash pipeline.sh
     ```
+### Files created for this approach
+* pipeline/datasets/sparse_dataset.py
+* pipeline/api_call.py
+* pipeline/resize_images.py
+* pipeline/resize_input.py
+* pipeline/pipeline.sh
