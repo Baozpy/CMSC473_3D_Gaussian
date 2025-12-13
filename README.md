@@ -40,65 +40,21 @@ python pipeline/datasets/sparse_dataset.py --input-path <path to images director
 ### Nano Banana Pro Results
 
 Most 3DGS rendered frames for a model trained on just 25% of the original bicycle dataset were successfully cleaned and reconstructed by Nano Banana Pro as shown below for frame 16 under the /results_nano_banana_bikesparse48 directory.
-<div style="display: flex; justify-content: space-around; width: 100%;">
-  <div style="flex: 1; padding: 5px;">
-    <p><strong>3DGS Rendered Frame 16</strong></p>
-    <img src="pipeline/results_nano_banana_bikesparse48/cleaned_frames_nbpro/frame16/frame16.png" style="width: 25%; height: auto;"/>
-  </div>
-  <div style="flex: 1; padding: 5px;">
-    <p><strong>Downsampled</strong></p>
-    <img src="pipeline/results_nano_banana_bikesparse48/cleaned_frames_nbpro/frame16/frame16_low_res.png" style="width: 25%; height: auto;"/>
-  </div>
-  <div style="flex: 1; padding: 5px;">
-    <p><strong>Colored Depth Map</strong></p>
-    <img src="pipeline/results_nano_banana_bikesparse48/cleaned_frames_nbpro/frame16/frame16_depth_map.png" style="width: 25%; height: auto;"/>
-  </div>
-  <div style="flex: 1; padding: 5px;">
-    <p><strong>Cleaned Frame 16</strong></p>
-    <img src="pipeline/results_nano_banana_bikesparse48/cleaned_frames_nbpro/frame16/frame16_cleaned.png" style="width: 25%; height: auto;"/>
-  </div>
-</div>
-<br>
-However some reconstructed frames had clear hallucinations, usually in the background, as shown below in frame 4 under the /results_nano_banana_bikesparse48 directory.
-<div style="display: flex; justify-content: space-around; width: 100%;">
-  <div style="flex: 1; padding: 5px;">
-    <p><strong>3DGS Rendered Frame 4</strong></p>
-    <img src="pipeline/results_nano_banana_bikesparse48/cleaned_frames_nbpro/frame4/frame4.png" style="width: 25%; height: auto;"/>
-  </div>
-  <div style="flex: 1; padding: 5px;">
-    <p><strong>Downsampled</strong></p>
-    <img src="pipeline/results_nano_banana_bikesparse48/cleaned_frames_nbpro/frame4/frame4_low_res.png" style="width: 25%; height: auto;"/>
-  </div>
-  <div style="flex: 1; padding: 5px;">
-    <p><strong>Colored Depth Map</strong></p>
-    <img src="pipeline/results_nano_banana_bikesparse48/cleaned_frames_nbpro/frame4/frame4_depth_map.png" style="width: 25%; height: auto;"/>
-  </div>
-  <div style="flex: 1; padding: 5px;">
-    <p><strong>Cleaned Frame 4</strong></p>
-    <img src="pipeline/results_nano_banana_bikesparse48/cleaned_frames_nbpro/frame4/frame4_cleaned.png" style="width: 25%; height: auto;"/>
-  </div>
-</div>
 
-<br>
+3DGS Rendered Frame 16             |  Downsampled          |Colored Depth Map             |  Cleaned Frame 16
+:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
+![](pipeline/results_nano_banana_bikesparse48/cleaned_frames_nbpro/frame16/frame16.png)   | ![](pipeline/results_nano_banana_bikesparse48/cleaned_frames_nbpro/frame16/frame16_low_res.png) | ![](pipeline/results_nano_banana_bikesparse48/cleaned_frames_nbpro/frame16/frame16_depth_map.png)  |  ![](pipeline/results_nano_banana_bikesparse48/cleaned_frames_nbpro/frame16/frame16_cleaned.png)
+
+However some reconstructed frames had clear hallucinations, usually in the background, as shown below in frame 4 under the /results_nano_banana_bikesparse48 directory.
+3DGS Rendered Frame 4             |  Downsampled          |Colored Depth Map             |  Cleaned Frame 4
+:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
+![](pipeline/results_nano_banana_bikesparse48/cleaned_frames_nbpro/frame4/frame4.png)   | ![](pipeline/results_nano_banana_bikesparse48/cleaned_frames_nbpro/frame4/frame4_low_res.png) | ![](pipeline/results_nano_banana_bikesparse48/cleaned_frames_nbpro/frame4/frame4_depth_map.png)  |  ![](pipeline/results_nano_banana_bikesparse48/cleaned_frames_nbpro/frame4/frame4_cleaned.png)
+
 Nano Banana Pro performed significantly worse on just 15% of the original bicycle dataset. We hypothesize this is due to the poor quality of the 3DGS renders. It is likely that Nano Banana Pro could not determine what was captured in the 3DGS rendered frames, so it hallucinated entirely different scenes. After the third iteration of our pipeline, all 3DGS frames were heavily distorted by the accumulated hallucinations. We show the Nano Banana Pro results for frame 14 under the /results_nano_banana_bikesparse29 directory as an example below.
-<div style="display: flex; justify-content: space-around; width: 100%;">
-  <div style="flex: 1; padding: 5px;">
-    <p><strong>3DGS Rendered Frame 14</strong></p>
-    <img src="pipeline/results_nano_banana_bikesparse29/cleaned_frames_nbpro/frame14/frame14.png" style="width: 25%; height: auto;"/>
-  </div>
-  <div style="flex: 1; padding: 5px;">
-    <p><strong>Downsampled</strong></p>
-    <img src="pipeline/results_nano_banana_bikesparse29/cleaned_frames_nbpro/frame14/frame14_low_res.png" style="width: 25%; height: auto;"/>
-  </div>
-  <div style="flex: 1; padding: 5px;">
-    <p><strong>Colored Depth Map</strong></p>
-    <img src="pipeline/results_nano_banana_bikesparse29/cleaned_frames_nbpro/frame14/frame14_depth_map.png" style="width: 25%; height: auto;"/>
-  </div>
-  <div style="flex: 1; padding: 5px;">
-    <p><strong>Cleaned Frame 14</strong></p>
-    <img src="pipeline/results_nano_banana_bikesparse29/cleaned_frames_nbpro/frame14/frame14_cleaned.png" style="width: 25%; height: auto;"/>
-  </div>
-</div>
+
+3DGS Rendered Frame 14             |  Downsampled          |Colored Depth Map             |  Cleaned Frame 14
+:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
+![](pipeline/results_nano_banana_bikesparse29/cleaned_frames_nbpro/frame14/frame14.png)   | ![](pipeline/results_nano_banana_bikesparse29/cleaned_frames_nbpro/frame14/frame14_low_res.png) | ![](pipeline/results_nano_banana_bikesparse29/cleaned_frames_nbpro/frame14/frame14_depth_map.png)  |  ![](pipeline/results_nano_banana_bikesparse29/cleaned_frames_nbpro/frame14/frame14_cleaned.png)
 
 ### Overall Results
 This approach performed worse on all benchmarks when compared to just using 3DGS. We think this is due to the accumulated hallucinations introduced in the background of the 3DGS rendered frames as well as geometric inconsistencies that were not pruned by Colmap.
