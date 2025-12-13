@@ -5,7 +5,7 @@ import os
 import tyro
 
 '''
-api_call.py is a python script takes in an API key for 
+clean_frames() is a function that takes in an API key for 
 running Gemini models, a directory input_dir containing 
 3DGS renders that you wish to clean/reconstruct with 
 Nano Banana Pro, and a directory results_dir for storing
