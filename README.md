@@ -10,8 +10,9 @@ Our team thought of many approaches on improving the quality of rendered views d
 
 ## Approach 1: Cleaning Badly-Rendered 3DGS Views with Nano Banana Pro
 
-### Prerequisite
-Create a Conda environment and then install [Pytorch](https://pytorch.org/get-started/locally/)
+### Prerequisites
+* Have a Gemini API key
+* Create a Conda environment and then install [Pytorch](https://pytorch.org/get-started/locally/)
 
 ### Setting up Conda environment
 ```
@@ -23,7 +24,7 @@ conda install conda-forge::colmap
 
 ### Pipeline details
 
-This approach is implemented in the pipeline subdirectory of this repository, and it focuses on improving the render quality of NerfStudio's 3DGS model [Gsplat](https://github.com/nerfstudio-project/gsplat) when given a sparse set of views. To improve the render quality of the Gsplat model when trained on a sparse set of images, we first filter out geometrically inconsistent views through [Colmap's](https://colmap.github.io/) sparse reconstruction. We then train the model for 30 thousand iterations before freezing it. We then use the frozen model to render a mp4 video of the captured scene that takes on an ellipsoidal camera path trajectory. The mp4 video is then split into individual frames and each frame is cleaned using 2 API calls to Nano Banana Pro. The first API call creates a colored depth map of the frame. The second API call then uses a downsampled version of the original frame together with the previously generated colored depth map to reconstruct a clean, distortion-free frame. The cleaned frames are then resized and concatenated to the sparse set of views, and the whole process is repeated another two times. 
+This approach is implemented in the pipeline subdirectory of this repository, and it focuses on improving the render quality of NerfStudio's 3DGS model [Gsplat](https://github.com/nerfstudio-project/gsplat) when given a sparse set of views. To improve the render quality of the Gsplat model when trained on a sparse set of images, we first filter out geometrically inconsistent views through [Colmap's](https://colmap.github.io/) sparse reconstruction. We then train the model for 30 thousand iterations before freezing it. We then use the frozen model to render a mp4 video of the captured scene that takes on an ellipsoidal camera path trajectory. The mp4 video is then split into individual frames and each frame is cleaned using 2 API calls to [Nano Banana Pro](https://ai.google.dev/gemini-api/docs/image-generation). The first API call creates a colored depth map of the frame. The second API call then uses a downsampled version of the original frame together with the previously generated colored depth map to reconstruct a clean, distortion-free frame. The cleaned frames are then resized and concatenated to the sparse set of views, and the whole process is repeated another two times. 
 
 ### Dataset used for testing
 We tested this approach on both 15% and 25% of the images (randomly sampled) within the bicycle dataset of Mip-NeRF 360. 
