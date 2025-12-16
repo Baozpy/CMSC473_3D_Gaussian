@@ -93,3 +93,145 @@ This approach performed worse on all benchmarks when compared to just using 3DGS
 * pipeline/resize_images.py
 * pipeline/resize_input.py
 * pipeline/pipeline.sh
+
+## Approach 2: Post-processing 3DGS Renders with Qwen
+### Prerequisites
+* [ComfyUI](https://github.com/comfyanonymous/ComfyUI)
+* [Qwen Image Edit 2509](https://huggingface.co/Qwen) and its required custom nodes
+* Python 3.9 or newer
+* [FFmpeg](https://ffmpeg.org/)
+
+### How to Use This Approach
+
+This approach does not provide a single end-to-end automated pipeline.
+Instead, it combines an interactive ComfyUI workflow for Qwen-based image editing
+with a set of standalone Python scripts that handle preprocessing, camera
+transform conversion, and quantitative evaluation.
+
+This design reflects the practical usage pattern of diffusion-based image editing
+in ComfyUI, while still ensuring that all experimental steps are reproducible.
+
+All auxiliary scripts used in this approach are located under
+[`./qwen-image-edit/scripts/`](./qwen-image-edit/scripts/).
+
+### Typical Workflow
+
+A typical usage flow for this approach is as follows:
+
+1. Render views from a trained sparse 3DGS model using Nerfstudio.
+2. (Optional) Convert between `transforms.json` and `ns-viewer` camera-path formats
+   to generate or reuse specific camera trajectories.
+3. Preprocess rendered frames using the provided preprocessing scripts.
+4. Load the provided ComfyUI workflow and apply Qwen Image Edit to the rendered frames.
+5. Postprocess and resize the edited images if needed.
+6. Run `2dcpr.py` to compare:
+   - Test images vs original 3DGS renders
+   - Test images vs Qwen-augmented 3DGS renders
+   - Original 3DGS renders vs Qwen-edited renders
+7. Use the generated plots, tables, and qualitative comparisons directly in the report.
+
+### Dataset Used for Evaluation
+
+We evaluate this approach using the **NeRF Synthetic** dataset,
+which provides rendered ground-truth images and camera parameters
+for controlled evaluation of novel view synthesis methods.
+
+In this work, we focus on a subset of the *Chair* scene from the
+NeRF Synthetic dataset for quantitative and qualitative comparison.
+
+The dataset is publicly available at:
+https://www.kaggle.com/datasets/nguyenhung1903/nerf-synthetic-dataset
+
+
+### Qwen Image Edit Results
+
+Since Qwen-based image editing operates directly on rendered images,
+we first present qualitative comparisons between original 3DGS renders
+and their corresponding Qwen-edited versions.
+
+Original 3DGS Render | Qwen-Edited Render
+:--------------------:|:------------------:
+![](qwen-image-edit/results/renders/original_3dgs/r_150.png) | ![](qwen-image-edit/results/renders/qwen_augmented_3dgs/s_6.png)
+![](qwen-image-edit/results/renders/original_3dgs/r_125.png) | ![](qwen-image-edit/results/renders/qwen_augmented_3dgs/s_5.png)
+
+
+These examples illustrate the visual changes introduced by Qwen-based
+post-processing, including noise reduction and local appearance refinement,
+as well as occasional structural deviations.
+
+### Comparison with Test Images and Retrained Results
+
+To further examine the effect of Qwen-based post-processing in the context
+of 3DGS training, we compare rendered views from models trained with and
+without Qwen-edited images against the test set.
+
+Test Image | Original 3DGS Render | Qwen-Augmented 3DGS Render
+:--------------------:|:------------------:|:------------------:
+![](qwen-image-edit/data/nerf_synthetic_chair/test/r_21.png) | ![](qwen-image-edit/results/3dgs/r_21.png) | ![](qwen-image-edit/results/qwen/r_21.png)
+
+### Quantitative Results
+
+We evaluate the effect of Qwen-based post-processing using three standard
+image similarity metrics: PSNR, SSIM, and LPIPS.
+Pairwise comparisons are conducted across the following image sets:
+
+#### Test images vs. original 3DGS renders
+| Metric | mean | std | min | q1 | median | q3 | max |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| PSNR | 21.6244 | 7.7138 | 12.0763 | 14.5960 | 18.1496 | 28.4654 | 37.2606 |
+| SSIM | 0.9050 | 0.0593 | 0.7730 | 0.8720 | 0.9097 | 0.9564 | 0.9909 |
+| LPIPS | 0.1743 | 0.1151 | 0.0079 | 0.0661 | 0.1405 | 0.2920 | 0.4019 |
+
+#### Test images vs. Qwen-edited renders
+| Metric | mean | std | min | q1 | median | q3 | max |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| PSNR | 18.3977 | 4.9964 | 12.2403 | 14.6016 | 17.3151 | 20.6450 | 34.0539 |
+| SSIM | 0.8842 | 0.0496 | 0.7735 | 0.8694 | 0.8839 | 0.9132 | 0.9805 |
+| LPIPS | 0.2130 | 0.0961 | 0.0372 | 0.1305 | 0.2191 | 0.2949 | 0.4800 |
+
+#### Original 3DGS renders vs. Qwen-edited renders
+| Metric | mean | std | min | q1 | median | q3 | max |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| PSNR | 29.3138 | 12.6333 | 14.2407 | 20.3995 | 24.5813 | 33.5139 | 69.6476 |
+| SSIM | 0.9428 | 0.0474 | 0.8193 | 0.9023 | 0.9495 | 0.9913 | 0.9999 |
+| LPIPS | 0.1107 | 0.0752 | 0.0002 | 0.0462 | 0.1085 | 0.1721 | 0.2732 |
+
+Complete quantitative results, including per-image metrics, distribution plots,
+and qualitative comparisons of best and worst cases, are available under:
+[`./qwen-image-edit/results/`](./qwen-image-edit/results/)
+
+The comparisons between the test set and the two rendered variants show that
+Qwen-based post-processing does not lead to consistent improvements across
+any of the evaluated metrics.
+In particular, test–Qwen comparisons do not outperform the baseline
+test–3DGS results, indicating that Qwen-based editing does not bring the
+rendered views closer to the ground-truth distribution.
+
+Additionally, direct comparisons between original 3DGS renders and
+Qwen-edited renders suggest that the overall magnitude of change introduced
+by Qwen is limited.
+While local visual differences are observable, these changes do not translate
+into meaningful gains in global similarity metrics.
+
+### Analysis and Discussion
+Qualitative inspection shows that Qwen-based image editing can enhance
+local appearance details, particularly object textures, and may enrich
+visual diversity when incorporated into the training set.
+
+However, as a purely 2D image diffusion model, Qwen does not explicitly
+model 3D concepts such as camera pose, lighting consistency, or object
+geometry.
+As a result, each edited render may introduce subtle but inconsistent
+variations in viewpoint-dependent appearance.
+
+While these variations typically do not severely distort the main object
+geometry in the final 3DGS reconstruction, they can accumulate across views
+and manifest as additional floating artifacts (floaters) in the rendered scene.
+This behavior provides a plausible explanation for the observed degradation
+or lack of improvement in quantitative metrics.
+
+Overall, the results suggest that although diffusion-based 2D image editing
+can improve local texture quality, its lack of geometric and multi-view
+consistency limits its effectiveness as a direct augmentation strategy
+for sparse 3DGS training.
+

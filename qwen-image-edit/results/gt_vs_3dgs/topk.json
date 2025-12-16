@@ -1,0 +1,254 @@
+{
+  "best_psnr": [
+    {
+      "filename": "r_1.png",
+      "value": 37.26058747948528
+    },
+    {
+      "filename": "r_2.png",
+      "value": 36.96773416824313
+    },
+    {
+      "filename": "r_199.png",
+      "value": 36.85563278650435
+    },
+    {
+      "filename": "r_198.png",
+      "value": 36.64170835450874
+    },
+    {
+      "filename": "r_0.png",
+      "value": 36.535095211341726
+    },
+    {
+      "filename": "r_3.png",
+      "value": 36.506389178353956
+    },
+    {
+      "filename": "r_197.png",
+      "value": 36.45562070729967
+    },
+    {
+      "filename": "r_196.png",
+      "value": 36.27338604394843
+    },
+    {
+      "filename": "r_4.png",
+      "value": 36.09402731003385
+    },
+    {
+      "filename": "r_195.png",
+      "value": 35.772910819232585
+    }
+  ],
+  "worst_psnr": [
+    {
+      "filename": "r_147.png",
+      "value": 12.07631827358827
+    },
+    {
+      "filename": "r_146.png",
+      "value": 12.151015835913498
+    },
+    {
+      "filename": "r_148.png",
+      "value": 12.157671656956264
+    },
+    {
+      "filename": "r_52.png",
+      "value": 12.160099079312443
+    },
+    {
+      "filename": "r_145.png",
+      "value": 12.163794126944786
+    },
+    {
+      "filename": "r_53.png",
+      "value": 12.232992732809375
+    },
+    {
+      "filename": "r_54.png",
+      "value": 12.339372009891342
+    },
+    {
+      "filename": "r_152.png",
+      "value": 12.423782373764102
+    },
+    {
+      "filename": "r_55.png",
+      "value": 12.456228244890898
+    },
+    {
+      "filename": "r_149.png",
+      "value": 12.571550777240077
+    }
+  ],
+  "best_ssim": [
+    {
+      "filename": "r_0.png",
+      "value": 0.990916907787323
+    },
+    {
+      "filename": "r_1.png",
+      "value": 0.9903711676597595
+    },
+    {
+      "filename": "r_2.png",
+      "value": 0.9890780448913574
+    },
+    {
+      "filename": "r_199.png",
+      "value": 0.9875826835632324
+    },
+    {
+      "filename": "r_3.png",
+      "value": 0.9874017834663391
+    },
+    {
+      "filename": "r_198.png",
+      "value": 0.9864835739135742
+    },
+    {
+      "filename": "r_197.png",
+      "value": 0.985927402973175
+    },
+    {
+      "filename": "r_4.png",
+      "value": 0.9847715497016907
+    },
+    {
+      "filename": "r_196.png",
+      "value": 0.9846100211143494
+    },
+    {
+      "filename": "r_195.png",
+      "value": 0.9830805659294128
+    }
+  ],
+  "worst_ssim": [
+    {
+      "filename": "r_147.png",
+      "value": 0.7729726433753967
+    },
+    {
+      "filename": "r_146.png",
+      "value": 0.7756345868110657
+    },
+    {
+      "filename": "r_145.png",
+      "value": 0.7765843272209167
+    },
+    {
+      "filename": "r_52.png",
+      "value": 0.7769973874092102
+    },
+    {
+      "filename": "r_148.png",
+      "value": 0.7794782519340515
+    },
+    {
+      "filename": "r_53.png",
+      "value": 0.7805960774421692
+    },
+    {
+      "filename": "r_54.png",
+      "value": 0.7850797176361084
+    },
+    {
+      "filename": "r_152.png",
+      "value": 0.7874712944030762
+    },
+    {
+      "filename": "r_149.png",
+      "value": 0.7883896827697754
+    },
+    {
+      "filename": "r_55.png",
+      "value": 0.7894561886787415
+    }
+  ],
+  "best_lpips": [
+    {
+      "filename": "r_1.png",
+      "value": 0.007910158485174179
+    },
+    {
+      "filename": "r_2.png",
+      "value": 0.008692886680364609
+    },
+    {
+      "filename": "r_0.png",
+      "value": 0.01007361151278019
+    },
+    {
+      "filename": "r_3.png",
+      "value": 0.010530563071370125
+    },
+    {
+      "filename": "r_197.png",
+      "value": 0.012742210179567337
+    },
+    {
+      "filename": "r_196.png",
+      "value": 0.014136133715510368
+    },
+    {
+      "filename": "r_198.png",
+      "value": 0.017378080636262894
+    },
+    {
+      "filename": "r_199.png",
+      "value": 0.017633434385061264
+    },
+    {
+      "filename": "r_190.png",
+      "value": 0.018729500472545624
+    },
+    {
+      "filename": "r_128.png",
+      "value": 0.018771475180983543
+    }
+  ],
+  "worst_lpips": [
+    {
+      "filename": "r_83.png",
+      "value": 0.401912122964859
+    },
+    {
+      "filename": "r_147.png",
+      "value": 0.36064255237579346
+    },
+    {
+      "filename": "r_52.png",
+      "value": 0.3606371581554413
+    },
+    {
+      "filename": "r_53.png",
+      "value": 0.35919249057769775
+    },
+    {
+      "filename": "r_54.png",
+      "value": 0.35594847798347473
+    },
+    {
+      "filename": "r_145.png",
+      "value": 0.3553425669670105
+    },
+    {
+      "filename": "r_146.png",
+      "value": 0.3532317876815796
+    },
+    {
+      "filename": "r_55.png",
+      "value": 0.3526565432548523
+    },
+    {
+      "filename": "r_56.png",
+      "value": 0.3500343859195709
+    },
+    {
+      "filename": "r_57.png",
+      "value": 0.347202330827713
+    }
+  ]
+}
