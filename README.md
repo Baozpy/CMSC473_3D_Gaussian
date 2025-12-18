@@ -263,12 +263,25 @@ This pipeline was used to explore very sparse sets (12 views)
 * [`scripts\diffusion_refine.py`](scripts\diffusion_refine.py) - Refines candidate images using ControlNet and Stable Diffusion
 * [`scripts\subsample.py`](scripts\subsample.py) - Of all the rendered images, pick a random subset for candidate additions to the dataset
 
-### Results and discussions
-This pipeline demonstrates that SparseGS can achieve high-quality reconstruction on the extremely limited 12-view training set, producing clean geometry and sharp radiance fields for those specific viewpoints. However, the model’s performance drops significantly on held-out test views, where the renders exhibit noise, structural drift, and poor generalization. This gap arises from several plausible factors:
-(1) the training views are too few to constrain geometry globally,
-(2) depth predictions (even from strong models like DepthAnything v2) carry scale and smoothness biases that accumulate during optimization,
-(3) diffusion-based refinement of SparseGS renders introduces style/semantic priors that may not match the true scene.
-These findings highlight an important limitation of using 2D generative diffusion models to support sparse 3D reconstruction: while they can enhance appearance locally and regularize sparse signals, they do not guarantee geometric consistency across viewpoints. In very sparse regimes, 2D diffusion helps “beautify” images but cannot replace the missing multiview supervision required for accurate 3D structure, emphasizing the need for stronger 3D-aware generative priors or geometry-conditioned diffusion models in future work.
+### Results and Discussions
+
+#### Train Set
+
+![](scripts/result_train.png)
+
+#### Test Set
+
+![](scripts/result_test.png)
+
+#### Analysis
+
+This pipeline demonstrates that SparseGS can achieve high-quality reconstruction on the extremely limited 12-view training set, producing clean geometry and sharp radiance fields for those specific viewpoints. However, the model's performance drops significantly on held-out test views, where the renders exhibit noise, structural drift, and poor generalization. This gap arises from several plausible factors:
+
+1. The training views are too few to constrain geometry globally
+2. Depth predictions (even from strong models like DepthAnything v2) carry scale and smoothness biases that accumulate during optimization
+3. Diffusion-based refinement of SparseGS renders introduces style/semantic priors that may not match the true scene
+
+These findings highlight an important limitation of using 2D generative diffusion models to support sparse 3D reconstruction: while they can enhance appearance locally and regularize sparse signals, they do not guarantee geometric consistency across viewpoints. In very sparse regimes, 2D diffusion helps "beautify" images but cannot replace the missing multiview supervision required for accurate 3D structure, emphasizing the need for stronger 3D-aware generative priors or geometry-conditioned diffusion models in future work.
 
 ## Unit Tests
 
