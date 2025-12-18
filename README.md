@@ -6,7 +6,10 @@
 
 ## What We Accomplished
 
-Our team thought of many approaches on improving the quality of rendered views despite having having sparse input views. These approaches include making API calls to Nano Banana Pro to clean up badly-rendered 3DGS views, ...
+Our team thought of many approaches on improving the quality of rendered views despite having having sparse input views. These approaches include:
+* Making API calls to Nano Banana Pro to clean up badly-rendered 3DGS views
+* Post-processing 3DGS Renders with Qwen-Image-Edit
+* Using DepthAnythingV2 for monocular depth cues to be used for SparseGS.
 
 ## Approach 1: Cleaning Badly-Rendered 3DGS Views with Nano Banana Pro
 
@@ -40,7 +43,7 @@ python pipeline/datasets/sparse_dataset.py --input-path <path to images director
 
 ### Nano Banana Pro Results
 
-Most 3DGS rendered frames for a model trained on just 25% of the original bicycle dataset were successfully cleaned and reconstructed by Nano Banana Pro as shown below for frame 16 under the /results_nano_banana_bikesparse48 directory.
+Most 3DGS rendered frames for a model trained on just 25% of the original bicycle dataset were successfully cleaned and reconstructed by Nano Banana Pro as shown below for frame 16 under the [`./pipeline/results_nano_banana_bikesparse48`](./pipeline/results_nano_banana_bikesparse48) directory.
 
 3DGS Rendered Frame 16             |  Downsampled          |Colored Depth Map             |  Cleaned Frame 16
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
@@ -51,7 +54,7 @@ However some reconstructed frames had clear hallucinations, usually in the backg
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
 ![](pipeline/results_nano_banana_bikesparse48/cleaned_frames_nbpro/frame4/frame4.png)   | ![](pipeline/results_nano_banana_bikesparse48/cleaned_frames_nbpro/frame4/frame4_low_res.png) | ![](pipeline/results_nano_banana_bikesparse48/cleaned_frames_nbpro/frame4/frame4_depth_map.png)  |  ![](pipeline/results_nano_banana_bikesparse48/cleaned_frames_nbpro/frame4/frame4_cleaned.png)
 
-Nano Banana Pro performed significantly worse on just 15% of the original bicycle dataset. We hypothesize this is due to the poor quality of the 3DGS renders. It is likely that Nano Banana Pro could not determine what was captured in the 3DGS rendered frames, so it hallucinated entirely different scenes. After the third iteration of our pipeline, all 3DGS frames were heavily distorted by the accumulated hallucinations. We show the Nano Banana Pro results for frame 14 under the /results_nano_banana_bikesparse29 directory as an example below.
+Nano Banana Pro performed significantly worse on just 15% of the original bicycle dataset. We hypothesize this is due to the poor quality of the 3DGS renders. It is likely that Nano Banana Pro could not determine what was captured in the 3DGS rendered frames, so it hallucinated entirely different scenes. After the third iteration of our pipeline, all 3DGS frames were heavily distorted by the accumulated hallucinations. We show the Nano Banana Pro results for frame 14 under the [`./pipeline/results_nano_banana_bikesparse29`](./pipeline/results_nano_banana_bikesparse29) directory as an example below.
 
 3DGS Rendered Frame 14             |  Downsampled          |Colored Depth Map             |  Cleaned Frame 14
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
@@ -93,6 +96,8 @@ This approach performed worse on all benchmarks when compared to just using 3DGS
 * pipeline/resize_images.py
 * pipeline/resize_input.py
 * pipeline/pipeline.sh
+* pipeline/results_nano_banana_bikesparse48/
+* pipeline/results_nano_banana_bikesparse29/
 
 ## Approach 2: Post-processing 3DGS Renders with Qwen
 ### Prerequisites
@@ -235,5 +240,24 @@ can improve local texture quality, its lack of geometric and multi-view
 consistency limits its effectiveness as a direct augmentation strategy
 for sparse 3DGS training.
 
+## Approach 3: Using DepthAnythingV2 for Monocular Depth Cues to be Used for SparseGS
+
+### Prerequisites
+* Python 3.9 or newer
+* [DepthAnythingV2](
 
 
+## Unit Tests
+
+Our unit tests are located in the `tests/` directory. We tested the following modules:
+* pipeline/resize_input.py (Testing input resizing functionality prior to 3DGS training)
+* pipeline/resize_images.py (Testing image resizing functionality post 3DGS rendering)
+* pipeline/api_call.py (Testing Nano Banana Pro API calls - status code and response handling)
+* pipeline/datasets/sparse_dataset.py (Testing sparse dataset creation from dense image sets)
+
+## Future Work
+
+We have a few ideas for future work to improve upon our approaches:
+* Implement a **filtering pipeline** that excludes generated frames that negatively impacts metric scores
+* Finetune a pre-existing model on the input specifically for removing distortions 
+* **Stable Virtual Camera (SVC)** was released in 2025 that can do state of art novel view synthesis. It is a multimodal image generative model that is able to generate new views based on a camera pose. SVC has the downside of having very slow inference steps (50 of them). Another future direction can include exploring **distilled / teacher-student** versions of SVC to overcome the heavy computational times.
