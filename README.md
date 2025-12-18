@@ -9,7 +9,7 @@
 Our team thought of many approaches on improving the quality of rendered views despite having having sparse input views. These approaches include:
 * Making API calls to Nano Banana Pro to clean up badly-rendered 3DGS views
 * Post-processing 3DGS Renders with Qwen-Image-Edit
-* Using DepthAnythingV2 for monocular depth cues to be used for SparseGS.
+* Using DepthAnythingV2 for monocular depth cues to be used for SparseGS
 
 ## Approach 1: Cleaning Badly-Rendered 3DGS Views with Nano Banana Pro
 
@@ -249,11 +249,11 @@ for sparse 3DGS training.
 
 ## Unit Tests
 
-Our unit tests are located in the `tests/` directory. We tested the following modules:
-* pipeline/resize_input.py (Testing input resizing functionality prior to 3DGS training)
-* pipeline/resize_images.py (Testing image resizing functionality post 3DGS rendering)
-* pipeline/api_call.py (Testing Nano Banana Pro API calls - status code and response handling)
-* pipeline/datasets/sparse_dataset.py (Testing sparse dataset creation from dense image sets)
+Our unit tests are located in the `tests/` directory. We tested the following modules which are the most critical to our pipeline:
+* [`pipeline/resize_input.py`](pipeline/resize_input.py) - Tests the resize_input function for proper directory checks and image resizing/renaming behavior
+* [`pipeline/resize_images.py`](pipeline/resize_images.py) - Tests the concatenate_images function for proper directory checks and image resizing/renaming behavior
+* [`pipeline/api_call.py`](pipeline/api_call.py) - Testing Nano Banana Pro API calls - status code and response handling
+* [`pipeline/datasets/sparse_dataset.py`](pipeline/datasets/sparse_dataset.py) - Testing sparse dataset creation from dense image sets
 
 ## Future Work
 
